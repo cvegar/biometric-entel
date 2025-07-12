@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="biometric-entel" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://apache.org/cordova/ns/plugins/1.0 ">
+    <name>BiometricCordova</name>
+    <js-module name="BiometricCordova" src="www/BiometricCordova.js">
+        <clobbers target="cordova.plugins.BiometricCordova" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="BiometricCordova">
+                <param name="android-package" value="biometric.entel.BiometricCordova" />
+            </feature>
+        </config-file>
+
+          <!-- Permisos -->
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.CAMERA" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        </config-file>
+        <!-- Actividades -->
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity
+                android:name="biometric.entel.LauncherActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:exported="true"
+                android:label="@string/app_name">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+
+            <activity
+                android:name="biometric.entel.GetReaderActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:label="@string/app_name"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                </intent-filter>
+                <meta-data
+                    android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                    android:resource="@xml/device_filter" />
+            </activity>
+
+            <activity
+                android:name="biometric.entel.CaptureFingerprintActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:label="@string/app_name" />
+
+            <activity
+                android:name="biometric.entel.MainActivity"
+                android:configChanges="keyboardHidden|orientation|screenSize"
+                android:label="@string/app_name" />
+
+            <activity
+                android:name="biometric.entel.ScanActionActivity"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="pe.entel.biometrico.intent.action.SCAN"/>
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+            </activity>
+
+            <activity
+                android:name="biometric.entel.ScanActionCryptoActivity"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="pe.entel.biometrico.intent.action.SCANC"/>
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+            </activity>
+
+            <activity android:name="biometric.entel.JSGDActivity" />
+        </config-file>
+        <source-file src="src/android/BiometricCordova.java" target-dir="src/biometric/entel" />
+        <source-file src="src/android/GetReaderActivity.java" target-dir="src/biometric/entel" />
+        <source-file src="src/android/util/Globals.java" target-dir="src/biometric/entel/util" />
+        <source-file src="src/android/ScanActionCryptoActivity.java" target-dir="src/biometric/entel" />
+        <source-file src="src/android/MainActivity.java" target-dir="src/biometric/entel" />
+        <source-file src="src/android/JSGDActivity.java" target-dir="src/biometric/entel" />
+        <source-file src="src/android/CaptureFingerprintActivity.java" target-dir="src/biometric/entel" />
+        <source-file src="src/android/util/Utils.java" target-dir="src/biometric/entel/util" />
+        <source-file src="src/android/util/JSGUtils.java" target-dir="src/biometric/entel/util" />
+        <source-file src="src/android/LauncherActivity.java" target-dir="src/biometric/entel" />
+        <resource-file src="src/android/res/xml/device_filter.xml" target="res/xml/device_filter.xml" />
+        <asset src="src/android/assets/key.txt" target="assets" />
+        <asset src="src/android/assets/private.key" target="assets" />
+        <asset src="src/android/assets/public.key" target="assets" />
+        <asset src="src/android/assets/vector.txt" target="assets" />
+
+
+        <lib-file src="src/android/libs/CriptoAPI.jar" />
+        <lib-file src="src/android/libs/dpuareu.aar" />
+        <lib-file src="src/android/libs/FDxSDKProAndroid.jar" />
+        <lib-file src="src/android/libs/zymorpholib_v64_entel-release_6.42.0.v2.6.9.aar" />
+    </platform>
+</plugin>
