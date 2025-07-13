@@ -7,7 +7,8 @@ repositories{
 
 dependencies {
     //TEST SI SE PUEDE CAMBIAR
-
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.9.0'
     implementation(name: 'dpuareu', ext: 'aar')
     implementation(name: 'zymorpholib_v64_entel-release_6.42.0.v2.6.9', ext: 'aar')
 

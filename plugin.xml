@@ -77,7 +77,8 @@
             <activity android:name="biometric.entel.JSGDActivity" />
         </config-file>
 
-
+        <framework src="androidx.constraintlayout:constraintlayout:2.1.4" />
+        <framework src="com.google.android.material:material:1.9.0" />
 
         <resource-file src="src/android/res/drawable/black.jpg" target="res/drawable/black.jpg" />
         <resource-file src="src/android/res/drawable/ic_launcher_background.xml" target="res/drawable/ic_launcher_background.xml" />
