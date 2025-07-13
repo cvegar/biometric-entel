@@ -8,8 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import MainActivity;
-import ScanActionCryptoActivity;
+import biometric.entel.MainActivity;
+import biometric.entel.ScanActionCryptoActivity;
 
 
 
