@@ -6,7 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import biometrico.entel.pe.BuildConfig;
+//import biometrico.entel.pe.BuildConfig;
 
 public class Utils {
 
@@ -55,7 +55,7 @@ public class Utils {
         return new String(dest);
     }
 
-
+/*
     public static String cualBuild() {
         String respuesta = "NIGUNO";
 
@@ -71,7 +71,7 @@ public class Utils {
 
         return respuesta;
     }
-
+*/
     public static String fnVersion(Context poContext) {
         String lsVersion = "";
         PackageInfo loPackageInfo = null;

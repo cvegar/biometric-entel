@@ -1,0 +1,24 @@
+repositories{
+    jcenter()
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    //TEST SI SE PUEDE CAMBIAR
+
+    implementation(name: 'dpuareu', ext: 'aar')
+    implementation(name: 'zymorpholib_v64_entel-release_6.42.0.v2.6.9', ext: 'aar')
+
+}
+
+android {
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+	
+}
+

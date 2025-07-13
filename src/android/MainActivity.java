@@ -18,7 +18,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.digitalpersona.uareu.Reader;
+import com.
+import com.rsa.CryptoUtil;
 import com.digitalpersona.uareu.Reader.Priority;
 import com.digitalpersona.uareu.UareUException;
 import com.digitalpersona.uareu.dpfpddusbhost.DPFPDDUsbException;
