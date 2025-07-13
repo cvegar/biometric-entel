@@ -1,4 +1,4 @@
-package pe.entel.biometrico.util;
+package biometric.entel.util;
 
 /**
  * Estimado programador:

@@ -1,4 +1,4 @@
-package pe.entel.biometrico.util;
+package biometric.entel.util;
 
 import android.Manifest;
 import android.content.Context;
