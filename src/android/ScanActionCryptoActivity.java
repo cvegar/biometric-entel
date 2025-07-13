@@ -27,9 +27,10 @@ import com.zytrust.android.lib.bio.morpho.ui.ZyResponse;
 import SecuGen.FDxSDKPro.JSGFPLib;
 import SecuGen.FDxSDKPro.SGFDxDeviceName;
 import SecuGen.FDxSDKPro.SGFDxErrorCode;
-import biometric.entel.R;
+//import biometric.entel.R;
 import biometric.entel.util.Globals;
 import biometric.entel.util.Utils;
+import com.outsystemsenterprise.entel.PEMayorista.R;
 
 public class ScanActionCryptoActivity extends Activity {
 

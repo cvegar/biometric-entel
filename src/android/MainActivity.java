@@ -24,7 +24,8 @@ import com.digitalpersona.uareu.UareUException;
 import com.digitalpersona.uareu.dpfpddusbhost.DPFPDDUsbException;
 import com.digitalpersona.uareu.dpfpddusbhost.DPFPDDUsbHost;
 
-import biometric.entel.R;
+import com.outsystemsenterprise.entel.PEMayorista.R;
+//import biometric.entel.R;
 import biometric.entel.util.Globals;
 
 public class MainActivity extends Activity {
