@@ -81,7 +81,6 @@
         <resource-file src="src/android/res/values/strings.xml" target="res/values/strings.xml"/>
         <resource-file src="src/android/res/values/styles.xml" target="res/values/styles.xml"/>
 		<resource-file src="src/android/res/values/colors.xml" target="res/values/colors.xml"/>
-		<resource-file src="src/android/res/xml/device_filter.xml" target="res/xml/device_filter.xml" />
         <resource-file src="src/android/res/layout/activity_main.xml" target="res/layout/activity_main.xml" />
         <resource-file src="src/android/res/layout/activity_scan.xml" target="res/layout/activity_scan.xml" />
         <resource-file src="src/android/res/drawable/entel_btn_bg_orange.xml" target="res/drawable/entel_btn_bg_orange.xml" />
@@ -97,7 +96,7 @@
         <source-file src="src/android/GetReaderActivity.java" target-dir="src/android" />
 
         <source-file src="src/android/util/Utils.java" target-dir="src/android/util"/>
-        <source-file src="src/android/JSGUtils.java" target-dir="src/android" />
+        <source-file src="src/android/JSGDUtils.java" target-dir="src/android" />
         <source-file src="src/android/util/Globals.java" target-dir="src/android/util" />
 
 
