@@ -76,16 +76,16 @@
 
             <activity android:name="biometric.entel.JSGDActivity" />
         </config-file>
-        <source-file src="src/android/BiometricCordova.java" target-dir="src/biometric/entel" />
-        <source-file src="src/android/GetReaderActivity.java" target-dir="src/biometric/entel" />
-        <source-file src="src/android/util/Globals.java" target-dir="src/biometric/entel/util" />
-        <source-file src="src/android/ScanActionCryptoActivity.java" target-dir="src/biometric/entel" />
-        <source-file src="src/android/MainActivity.java" target-dir="src/biometric/entel" />
-        <source-file src="src/android/JSGDActivity.java" target-dir="src/biometric/entel" />
-        <source-file src="src/android/CaptureFingerprintActivity.java" target-dir="src/biometric/entel" />
-        <source-file src="src/android/util/Utils.java" target-dir="src/biometric/entel/util" />
-        <source-file src="src/android/util/JSGUtils.java" target-dir="src/biometric/entel/util" />
-        <source-file src="src/android/LauncherActivity.java" target-dir="src/biometric/entel" />
+        <source-file src="src/android/biometric/entel/BiometricCordova.java" target-dir="src/android/biometric/entel" />
+        <source-file src="src/android/biometric/entel/GetReaderActivity.java" target-dir="src/android/biometric/entel" />
+        <source-file src="src/android/biometric/entel/utils/Globals.java" target-dir="src/android/biometric/entel/utils" />
+        <source-file src="src/android/biometric/entel/ScanActionCryptoActivity.java" target-dir="src/android/biometric/entel" />
+        <source-file src="src/android/biometric/entel/MainActivity.java" target-dir="src/android/biometric/entel" />
+        <source-file src="src/android/biometric/entel/JSGDActivity.java" target-dir="src/android/biometric/entel" />
+        <source-file src="src/android/biometric/entel/CaptureFingerprintActivity.java" target-dir="src/android/biometric/entel" />
+        <source-file src="src/android/biometric/entel/utils/Utils.java" target-dir="src/android/biometric/entel/utils" />
+        <source-file src="src/android/biometric/entel/utils/JSGUtils.java" target-dir="src/android/biometric/entel/utils" />
+        <source-file src="src/android/biometric/entel/LauncherActivity.java" target-dir="src/android/biometric/entel" />
         <resource-file src="src/android/res/xml/device_filter.xml" target="res/xml/device_filter.xml" />
         <asset src="src/android/assets/key.txt" target="assets" />
         <asset src="src/android/assets/private.key" target="assets" />
