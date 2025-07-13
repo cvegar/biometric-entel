@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
-import biometric.entel.MainActivity;
-import biometric.entel.ScanActionCryptoActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import MainActivity;
+import ScanActionCryptoActivity;
 
 
 

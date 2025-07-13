@@ -76,11 +76,11 @@
 
             <activity android:name="biometric.entel.JSGDActivity" />
         </config-file>
-        <source-file src="src/android/biometric/entel/BiometricCordova.java" target-dir="src/android/biometric/entel" />
-        <source-file src="src/android/biometric/entel/util/Globals.java" target-dir="src/android/biometric/entel/util" />
-        <source-file src="src/android/biometric/entel/ScanActionCryptoActivity.java" target-dir="src/android/biometric/entel" />
-        <source-file src="src/android/biometric/entel/MainActivity.java" target-dir="src/android/biometric/entel" />
-        <source-file src="src/android/biometric/entel/util/Utils.java" target-dir="src/android/biometric/entel/util" />
+        <source-file src="src/android/BiometricCordova.java" target-dir="src/android" />
+        <source-file src="src/android/util/Globals.java" target-dir="src/android/util" />
+        <source-file src="src/android/ScanActionCryptoActivity.java" target-dir="src/android" />
+        <source-file src="src/android/MainActivity.java" target-dir="src/android" />
+        <source-file src="src/android/util/Utils.java" target-dir="src/android/util" />
         <resource-file src="src/android/res/xml/device_filter.xml" target="res/xml/device_filter.xml" />
         <asset src="src/android/assets/key.txt" target="assets" />
         <asset src="src/android/assets/private.key" target="assets" />
