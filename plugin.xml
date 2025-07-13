@@ -96,7 +96,7 @@
         <source-file src="src/android/GetReaderActivity.java" target-dir="src/android" />
 
         <source-file src="src/android/util/Utils.java" target-dir="src/android/util"/>
-        <source-file src="src/android/JSGDUtils.java" target-dir="src/android" />
+        <source-file src="src/android/util/JSGDUtils.java" target-dir="src/android/util" />
         <source-file src="src/android/util/Globals.java" target-dir="src/android/util" />
 
 
