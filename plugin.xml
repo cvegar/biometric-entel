@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://apache.org/cordova/ns/plugins/1.0 ">
     <name>BiometricCordova</name>
     <js-module name="BiometricCordova" src="www/BiometricCordova.js">
-        <clobbers target="cordova.plugins.BiometricCordova" />
+        <clobbers target="BiometricCordova" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">

@@ -1,9 +1,13 @@
 var exec = require('cordova/exec');
 
-exports.launchMainActivity = function (success, error) {
-    exec(success, error, "BiometricCordova", "launchMainActivity", []);
+var BiometricCordova = {
+    launchMainActivity: function(successCallback, errorCallback) {
+        exec(successCallback, errorCallback, "BiometricCordova", "launchMainActivity", []);
+    },
+
+    launchScanCrypto: function(successCallback, errorCallback) {
+        exec(successCallback, errorCallback, "BiometricCordova", "launchScanCrypto", []);
+    }
 };
 
-exports.launchScanCrypto = function (success, error) {
-    exec(success, error, "BiometricCordova", "launchScanCrypto", []);
-};
+module.exports = BiometricCordova;
