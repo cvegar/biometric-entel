@@ -69,7 +69,8 @@
                 android:name="biometric.entel.JSGDActivity"
                 android:exported="false" />
         </config-file>
-
+        
+        <framework src="androidx.appcompat:appcompat:1.6.1" />
         <framework src="androidx.constraintlayout:constraintlayout:2.1.4" />
         <framework src="com.google.android.material:material:1.9.0" />
 
