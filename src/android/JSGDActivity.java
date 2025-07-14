@@ -47,7 +47,7 @@ import SecuGen.FDxSDKPro.SGFingerPresentEvent;
 import SecuGen.FDxSDKPro.SGWSQLib;
 import com.outsystemsenterprise.entel.PEMayorista.R;
 //import biometric.entel.R;
-import biometric.entel.JSGDUtils;
+import biometric.entel.util.JSGDUtils;
 import biometric.entel.util.Utils;
 
 public class JSGDActivity extends Activity
