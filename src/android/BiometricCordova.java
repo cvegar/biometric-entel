@@ -18,10 +18,52 @@ import biometric.entel.ScanActionCryptoActivity;
  */
 public class BiometricCordova extends CordovaPlugin {
 
-
+    private static final int CAPTURE_REQUEST = 1;
     private static final int REQUEST_CODE_SCAN_CRYPTO = 1010;
     private CallbackContext callbackContextGlobal;
 
+
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        this.callbackContext = callbackContext;
+
+        if (action.equals("captureFingerprint")) {
+            String instructions = args.getString(0);
+            String rightFinger = args.getString(1);
+            String leftFinger = args.getString(2);
+
+            Intent intent = new Intent(cordova.getActivity(), CaptureFingerprintActivity.class);
+            intent.putExtra("instructions", instructions);
+            intent.putExtra("right_finger", rightFinger);
+            intent.putExtra("left_finger", leftFinger);
+
+            cordova.startActivityForResult(this, intent, CAPTURE_REQUEST);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAPTURE_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                String fingerprintData = data.getStringExtra("finger");
+                String serialNumber = data.getStringExtra("serialnumber");
+                
+                JSONObject result = new JSONObject();
+                try {
+                    result.put("fingerprint", fingerprintData);
+                    result.put("serialNumber", serialNumber);
+                    callbackContext.success(result);
+                } catch (JSONException e) {
+                    callbackContext.error("Error al procesar los datos.");
+                }
+            } else {
+                callbackContext.error("Captura cancelada o fallida.");
+            }
+        }
+    }
+    
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if ("launchMainActivity".equals(action)) {
