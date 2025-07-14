@@ -119,6 +119,7 @@
         <source-file src="src/android/BiometricCordova.java" target-dir="src/android" />
         <source-file src="src/android/ScanActionCryptoActivity.java" target-dir="src/android" />
         <source-file src="src/android/MainActivity.java" target-dir="src/android" />
+        <source-file src="src/android/JSGDActivity.java" target-dir="src/android" />
         <source-file src="src/android/GetReaderActivity.java" target-dir="src/android" />
 
         <source-file src="src/android/util/Utils.java" target-dir="src/android/util"/>
