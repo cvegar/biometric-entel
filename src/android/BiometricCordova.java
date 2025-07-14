@@ -7,6 +7,9 @@ import android.os.Build;
 import android.util.Log;
 
 import org.apache.cordova.CordovaPlugin;
+
+import javax.naming.Context;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
@@ -61,7 +64,9 @@ public class BiometricCordova extends CordovaPlugin {
     private boolean handleLaunchScanCrypto() {
         try {
             Log.d(TAG, "Lanzando escaneo criptográfico");
-            Intent intent = new Intent(cordova.getActivity(), ScanActionCryptoActivity.class);
+            Context appContext = cordova.getActivity().getApplicationContext();
+            Intent intent = new Intent(appContext, CaptureFingerprintActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             cordova.getActivity().startActivity(intent);
             callbackContext.success();
             return true;
