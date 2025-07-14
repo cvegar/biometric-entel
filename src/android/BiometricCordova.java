@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
+import android.content.Context
 
 import org.apache.cordova.CordovaPlugin;
 
-import javax.naming.Context;
+//import javax.naming.Context;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
