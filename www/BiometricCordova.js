@@ -1,55 +1,69 @@
-var exec = require('cordova/exec');
-
 var BiometricCordova = {
-    // Métodos existentes
-    launchMainActivity: function(successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "BiometricCordova", "launchMainActivity", []);
-    },
-
+    // Lanza el escaneo criptográfico
     launchScanCrypto: function(successCallback, errorCallback) {
-        exec(successCallback, errorCallback, "BiometricCordova", "launchScanCrypto", []);
+        cordova.exec(
+            successCallback,
+            errorCallback,
+            'BiometricCordova', // Nombre del plugin (debe coincidir con config.xml)
+            'launchScanCrypto',
+            [] // Sin parámetros
+        );
     },
 
-    // Nuevo método mejorado para captura de huella
-    captureFingerprint: function(params) {
-        return new Promise(function(resolve, reject) {
-            var instructions = params.instructions || "Coloca tu dedo en el lector";
-            var rightFinger = params.rightFinger || "thumb_right";
-            var leftFinger = params.leftFinger || "index_right";
-            
-            exec(
-                function(result) {
-                    if (typeof result === 'string') {
-                        try {
-                            result = JSON.parse(result);
-                        } catch (e) {
-                            return reject("Formato de respuesta inválido");
-                        }
+    captureFingerprint: function(instructions, rightFinger, leftFinger, successCallback, errorCallback) {
+        cordova.exec(
+            function(result) {
+                // Procesamiento estándar del resultado
+                if (typeof result === 'string') {
+                    try {
+                        result = JSON.parse(result); // Para casos donde Cordova serializa el JSON
+                    } catch (e) {
+                        errorCallback("Formato de respuesta inválido");
+                        return;
                     }
-                    resolve(result);
-                },
-                function(error) {
-                    reject(error || "Error desconocido en captura de huella");
-                },
-                "BiometricCordova",
-                "captureFingerprint", 
-                [instructions, rightFinger, leftFinger]
+                }
+                
+                // Validación de estructura
+                if (result && typeof result.success !== 'undefined') {
+                    successCallback(result);
+                } else {
+                    errorCallback("Respuesta inesperada del plugin");
+                }
+            },
+            errorCallback,
+            'BiometricCordova', // Nombre del plugin (debe coincidir con config.xml)
+            'captureFingerprint',
+            [
+                instructions || "Coloca tu dedo en el lector",
+                rightFinger || "thumb_right",
+                leftFinger || "index_left"
+            ]
+        );
+    },
+
+    /**
+     * Versión con Promesas (opcional)
+     */
+    captureFingerprintPromise: function(instructions, rightFinger, leftFinger) {
+        return new Promise((resolve, reject) => {
+            this.captureFingerprint(
+                instructions,
+                rightFinger,
+                leftFinger,
+                resolve,
+                reject
             );
         });
-    },
-
-    // Versión simplificada con callback
-    simpleCapture: function(successCallback, errorCallback) {
-        this.captureFingerprint({})
-            .then(successCallback)
-            .catch(errorCallback);
     }
 };
 
-// Exportación para CommonJS y navegador
+// Registro automático en window.plugins si Cordova está disponible
+if (typeof window !== 'undefined' && window.cordova) {
+    if (!window.plugins) window.plugins = {};
+    window.plugins.BiometricCordova = BiometricCordova;
+}
+
+// Exportación para módulos (CommonJS/ES6)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = BiometricCordova;
-}
-if (typeof window !== 'undefined') {
-    window.BiometricCordova = BiometricCordova;
 }
