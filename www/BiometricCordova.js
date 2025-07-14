@@ -31,7 +31,7 @@ var BiometricCordova = {
                 }
             },
             errorCallback,
-            'BiometricCordova', // Nombre del plugin (debe coincidir con config.xml)
+            'biometric-entel', // Nombre del plugin (debe coincidir con config.xml)
             'captureFingerprint',
             [
                 instructions || "Coloca tu dedo en el lector",
