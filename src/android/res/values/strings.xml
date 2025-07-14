@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Entel Biométrico</string>
-    <string name="activity_name">MainActivity</string>
-    <string name="launcher_name">SandBox mayorista</string>
+    <string name="app_name">@string/app_name</string>
+    <string name="activity_name">@string/app_name</string>
+    <string name="launcher_name">@string/app_name</string>
     <string name="ledon">LED</string>
     <string name="sdktest">SDK Test</string>
     <string name="match">Verify</string>
