@@ -33,7 +33,7 @@ public class BiometricCordova extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        this.callbackContext = callbackContext;
+        this.callbackContext = callbackContext; // Guarda el callback (IMPORTANTE)
         Log.d(TAG, "Ejecutando acción: " + action);
 
         try {
@@ -47,10 +47,12 @@ public class BiometricCordova extends CordovaPlugin {
                     return handleLaunchScanCrypto();
                     
                 case "captureFingerprint":
+                    // Guarda el callback antes de iniciar la actividad
+                    this.captureCallbackContext = callbackContext; // Nuevo campo necesario
                     return handleCaptureFingerprint(args);
                     
                 default:
-                    callbackContext.error("Acción no reconocida");
+                    callbackContext.error("Acción no reconocida: " + action);
                     return false;
             }
         } catch (JSONException e) {
@@ -58,6 +60,36 @@ public class BiometricCordova extends CordovaPlugin {
             return false;
         } catch (Exception e) {
             callbackContext.error("Error inesperado: " + e.getMessage());
+            return false;
+        }
+    }
+
+
+    private boolean handleCaptureFingerprint(JSONArray args) throws JSONException {
+        try {
+            String instructions = args.optString(0, "Coloca tu dedo en el lector");
+            String rightFinger = args.optString(1, "thumb_right");
+            String leftFinger = args.optString(2, "index_left");
+
+            Context context = cordova.getActivity().getApplicationContext();
+            Intent intent = new Intent(context, CaptureFingerprintActivity.class);
+            intent.putExtra("instructions", instructions);
+            intent.putExtra("right_finger", rightFinger);
+            intent.putExtra("left_finger", leftFinger);
+
+            // Configura el callback para el resultado (FALTABA)
+            cordova.setActivityResultCallback(this);
+            
+            // Usa el método de Cordova para iniciar la actividad (Recomendado)
+            cordova.startActivityForResult(this, intent, CAPTURE_REQUEST);
+
+            PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
+            pluginResult.setKeepCallback(true);
+            callbackContext.sendPluginResult(pluginResult);
+            
+            return true;
+        } catch (Exception e) {
+            callbackContext.error("Error iniciando captura: " + e.getMessage());
             return false;
         }
     }
@@ -78,31 +110,7 @@ public class BiometricCordova extends CordovaPlugin {
         }
     }
 
-     private boolean handleCaptureFingerprint(JSONArray args) throws JSONException {
-        try {
-            String instructions = args.optString(0, "Coloca tu dedo en el lector");
-            String rightFinger = args.optString(1, "thumb_right");
-            String leftFinger = args.optString(2, "index_left");
-
-            Intent intent = new Intent(cordova.getActivity().getApplicationContext(), CaptureFingerprintActivity.class);
-            intent.putExtra("instructions", instructions);
-            intent.putExtra("right_finger", rightFinger);
-            intent.putExtra("left_finger", leftFinger);
-
-            cordova.setActivityResultCallback(this);
-            cordova.getActivity().startActivityForResult(intent, CAPTURE_REQUEST);
-
-            // Mantener callback para respuesta asíncrona
-            PluginResult pluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
-            pluginResult.setKeepCallback(true);
-            callbackContext.sendPluginResult(pluginResult);
-            
-            return true;
-        } catch (Exception e) {
-            callbackContext.error("Error iniciando captura: " + e.getMessage());
-            return false;
-        }
-    }
+     
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
