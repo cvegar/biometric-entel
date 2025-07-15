@@ -132,8 +132,10 @@ public class BiometricCordova extends CordovaPlugin {
             if (requestCode == CAPTURE_REQUEST) {
                 if (resultCode == Activity.RESULT_OK && data != null) {
                     String wsqBase64 = data.getStringExtra("finger");
-                    String serialNumber = data.getStringExtra("serialnumber", "N/A");
-                    
+                   String serialNumber = data.getStringExtra("serialnumber");
+                    if (serialNumber == null) {
+                        serialNumber = "N/A";
+                    }
                     if (wsqBase64 != null && !wsqBase64.isEmpty()) {
                         result.put("success", true);
                         result.put("wsq", wsqBase64);
