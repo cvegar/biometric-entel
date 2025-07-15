@@ -84,7 +84,7 @@ public class BiometricCordova extends CordovaPlugin {
             String rightFinger = args.optString(1, "thumb_right");
             String leftFinger = args.optString(2, "index_left");
 
-            Intent intent = new Intent(cordova.getActivity(), CaptureFingerprintActivity.class);
+            Intent intent = new Intent(cordova.getActivity().getApplicationContext(), CaptureFingerprintActivity.class);
             intent.putExtra("instructions", instructions);
             intent.putExtra("right_finger", rightFinger);
             intent.putExtra("left_finger", leftFinger);
